@@ -493,6 +493,21 @@ nav {
   .cards img {
     width: 200px;
   }
+  #mint-card .mint-button {
+    padding: 0px 19px;
+  }
+  .home-forth-container {
+    height: auto;
+  }
+  .home-fifth-container {
+    height: auto;
+  }
+  .home-second-container {
+    height: auto;
+  }
+  .home-third-container {
+    height: auto;
+  }
 }
 
 @media only screen and (max-width: 601px) {
