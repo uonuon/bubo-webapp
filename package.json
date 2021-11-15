@@ -13,6 +13,7 @@
     "url": "https://github.com/alexandr-g/cra-template-typescript-redux/issues"
   },
   "dependencies": {
+    "@stacks/connect": "^6.2.1",
     "@types/enzyme": "^3.10.4",
     "@types/jest": "^27.0.0",
     "@types/node": "^14.0.0",

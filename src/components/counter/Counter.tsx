@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { actionTypes, selectors } from '../../features/counter'
 
 const Counter: React.FC = () => {
-  const count = useSelector(selectors.getCountValue)
+  const count = useSelector(selectors.getUserData)
   const dispatch = useDispatch()
 
   return (
@@ -27,9 +27,7 @@ const Counter: React.FC = () => {
                   className="waves-effect waves-teal btn-flat blue"
                   type="button"
                   data-qa="decrement-counter"
-                  onClick={() =>
-                    dispatch({ type: actionTypes.DECREMENT_COUNTER })
-                  }
+                  onClick={() => dispatch({ type: actionTypes.GET_USER_DATA })}
                 >
                   decrement
                 </button>
@@ -37,9 +35,7 @@ const Counter: React.FC = () => {
                   className="waves-effect waves-teal btn-flat red"
                   type="button"
                   data-qa="increment-counter"
-                  onClick={() =>
-                    dispatch({ type: actionTypes.INCREMENT_COUNTER })
-                  }
+                  onClick={() => dispatch({ type: actionTypes.SET_USER_DATA })}
                 >
                   increment
                 </button>

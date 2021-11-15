@@ -1,15 +1,27 @@
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from './actionTypes'
+import { GET_USER_DATA, SET_USER_DATA } from './actionTypes'
 
 interface IncrementCounterAction {
-  type: typeof INCREMENT_COUNTER
+  type: typeof GET_USER_DATA
 }
 interface DecrementCounterAction {
-  type: typeof DECREMENT_COUNTER
+  type: typeof SET_USER_DATA
 }
 export type CounterActionTypes = IncrementCounterAction | DecrementCounterAction
 
 export interface SystemState {
-  count: {
-    value: number
+  isOpen: boolean
+  isAuthenticating: boolean
+  authData: any
+  userSession: any
+  authOptions: {
+    redirectTo: string
+    manifestPath: string
+    onFinish: () => void
+    authOrigin: any
+    sendToSignIn: boolean
+    appDetails: {
+      name: string
+      icon: string
+    }
   }
 }
