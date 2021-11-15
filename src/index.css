@@ -483,9 +483,15 @@ nav {
     padding: 15px;
     padding-top: 35px;
   }
+  .home-third-container .action-card {
+    width: 500px;
+  }
   #card-one {
     padding: 15px;
     padding-top: 60px;
+  }
+  .cards img {
+    width: 200px;
   }
 }
 
