@@ -1,0 +1,8 @@
+{
+  "name": "bubo-webapp",
+  "version": 1,
+  "public": true,
+  "github": {
+    "autoJobCancelation": false
+  }
+}

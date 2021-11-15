@@ -1,0 +1,546 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url('./assets/background.png');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.px1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.group {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* HERE GOES THE NAV*/
+
+nav {
+  position: fixed;
+  background-color: transparent;
+  padding: 8px 100px;
+  box-shadow: none;
+}
+
+/* HERE GOES THE HOME*/
+.home-container {
+  width: 100%;
+  height: 100vh;
+  padding: 0px 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.home-container h1 {
+  font-family: Manrope;
+  font-size: 68px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 93px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: white;
+}
+
+.home-container p {
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 33px;
+  color: white;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.home-container .mint-button {
+  background: #c4f0de;
+  border-radius: 80px;
+  padding: 0px 120px;
+  border: 6px solid #1d6649;
+  box-shadow: 0px 20px 38px 0px #3bcd92;
+}
+
+.mint-button p {
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 33px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #1d6649;
+}
+
+.home-second-container {
+  width: 100%;
+  height: 100vh;
+  padding: 0px 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.home-second-container h1 {
+  font-family: Manrope;
+  font-size: 68px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 93px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: white;
+}
+
+.home-second-container p {
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 33px;
+  color: white;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 100px;
+}
+
+.cards-container .card {
+  width: 300px;
+  height: 400px;
+  margin-right: 48px;
+  padding: 64px 46px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 80px;
+}
+
+#card-one {
+  padding: 108px 46px;
+  background-color: #c4f0de;
+  box-shadow: 0px 20px 38px 0px #3bcd92;
+}
+#card-one p {
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 33px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #219868;
+}
+#card-two {
+  background-color: #a39fa5;
+  box-shadow: 0px 20px 38px 0px #00000000;
+}
+#card-two p {
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 33px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #000;
+}
+#card-three {
+  background-color: #e9d0c6;
+  box-shadow: 0px 20px 38px 0px #b66140;
+}
+#card-three p {
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 33px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #662f19;
+}
+#card-four {
+  background-color: #decee9;
+  margin-right: 0px;
+  box-shadow: 0px 20px 38px 0px #925cb4;
+}
+#card-four p {
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 33px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #533466;
+}
+
+.home-third-container {
+  width: 100%;
+  height: 100vh;
+  padding: 0px 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.home-third-container h1 {
+  font-family: Manrope;
+  font-size: 68px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 93px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: white;
+}
+
+.home-third-container p {
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 33px;
+  color: white;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.home-third-container .action-card {
+  width: 600px;
+  margin-right: 48px;
+  padding: 64px 46px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-radius: 80px;
+}
+.home-third-container .action-card p {
+  font-family: Manrope;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: black;
+}
+
+.buttons-container {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#discord-card {
+  background-color: #cbdefa;
+  box-shadow: 0px 24px 32px rgba(83, 145, 239, 0.14),
+    0px 16px 24px rgba(83, 145, 239, 0.1), 0px 2px 6px rgba(83, 145, 239, 0.08),
+    0px 0px 1px rgba(0, 0, 0, 0.04);
+  border: 6px solid #5391ef;
+}
+#mint-card {
+  background-color: #decee8;
+  box-shadow: 0px 24px 32px rgba(146, 92, 180, 0.14),
+    0px 16px 24px rgba(146, 92, 180, 0.1), 0px 2px 6px rgba(146, 92, 180, 0.08),
+    0px 0px 1px rgba(0, 0, 0, 0.04);
+  border: 6px solid #925cb4;
+  margin-right: 0px;
+}
+
+#discord-card .mint-button {
+  background: #333;
+  border-radius: 80px;
+  padding: 0px 87px;
+}
+
+#discord-card .mint-button p {
+  font-family: Manrope;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 33px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: white;
+}
+
+#mint-card .mint-button {
+  background: #3bcd92;
+  border-radius: 80px;
+  padding: 0px 36px;
+}
+
+#mint-card .mint-button p {
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 5px;
+  /* letter-spacing: 0em; */
+  text-align: center;
+  color: #1d6649;
+}
+
+.home-forth-container {
+  width: 100%;
+  height: 100vh;
+  /* padding: 0px 100px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.home-forth-container h1 {
+  font-family: Manrope;
+  font-size: 68px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 93px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: white;
+}
+
+.home-forth-container p {
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 33px;
+  color: white;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.roadmap-header {
+  font-family: Avenir Next;
+  font-size: 32px !important;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 0px !important;
+  letter-spacing: 0em;
+  text-align: left;
+  color: white;
+}
+
+.roadmap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 20px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.roadmap-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.roadmap-item {
+  display: flex;
+  flex-direction: row;
+  flex: 0.5;
+  align-items: flex-start;
+}
+.roadmap-item img {
+  width: 70px;
+  height: 70px;
+  margin-top: 10px;
+  margin-right: 16px;
+}
+
+.roadmap-item p {
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0em;
+  margin-right: 20px;
+  text-align: left;
+  color: white;
+}
+
+.home-fifth-container {
+  width: 100%;
+  height: 60vh;
+  padding: 0px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.home-fifth-container h1 {
+  font-family: Manrope;
+  font-size: 68px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 93px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: white;
+}
+
+.home-fifth-container p {
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 33px;
+  color: white;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.home-fifth-container .mint-button {
+  background: #c4f0de;
+  border-radius: 80px;
+  padding: 0px 120px;
+  border: 6px solid #1d6649;
+  box-shadow: 0px 20px 38px 0px #3bcd92;
+}
+
+.mint-button p {
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 33px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #1d6649;
+}
+
+.footer {
+  width: 100%;
+  height: 50vh;
+  margin-top: 300px;
+  padding: 0px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #070c1d;
+}
+
+.footer h1 {
+  font-family: Manrope;
+  font-size: 68px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 93px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: white;
+}
+
+.footer p {
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 33px;
+  color: white;
+  letter-spacing: 0em;
+  text-align: center;
+}
+/* HERE GOES THE CSS*/
+
+/* HERE GOES THE CSS*/
+
+/* HERE GOES THE CSS*/
+
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 601px) {
+  .home-container {
+    padding: 0px !important;
+  }
+  .home-second-container {
+    padding: 0px !important;
+    height: auto;
+  }
+  .cards-container {
+    flex-direction: column;
+  }
+  .cards-container .card {
+    margin-right: 0px;
+  }
+  .home-third-container {
+    padding: 0px;
+    height: auto;
+  }
+  .home-third-container h1 {
+    font-size: 40px;
+    line-height: 30px;
+  }
+  .home-third-container .action-card {
+    margin-right: 0px;
+    width: 75%;
+    margin-top: 10px;
+    padding: 41px 20px;
+  }
+  .buttons-container {
+    flex-direction: column;
+  }
+  #discord-card .mint-button {
+    padding: 0px 50px;
+  }
+  .roadmap-row {
+    flex-direction: column;
+  }
+  .mint-button {
+    margin-bottom: 10px;
+  }
+  .roadmap-header {
+    line-height: 35px !important;
+  }
+  .home-forth-container {
+    height: auto;
+  }
+  .home-fifth-container {
+    height: auto;
+  }
+  .cards {
+    flex-direction: column;
+    display: flex;
+  }
+}
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 90%;
+}
