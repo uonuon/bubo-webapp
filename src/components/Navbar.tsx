@@ -7,14 +7,14 @@ export const Navbar: React.FC = () => (
       <NavLink to="/" className="brand-logo">
         Bubo
       </NavLink>
-      <ul className="right hide-on-med-and-down">
+      {/* <ul className="right hide-on-med-and-down">
         <li cy-data="home-nav-link">
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
           <NavLink to="/about">About</NavLink>
         </li>
-      </ul>
+      </ul> */}
     </div>
   </nav>
 )

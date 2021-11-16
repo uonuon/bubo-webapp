@@ -65,11 +65,11 @@ nav {
 }
 
 .home-container .mint-button {
-  background: #c4f0de;
+  background: #000;
   border-radius: 80px;
   padding: 0px 120px;
-  border: 6px solid #1d6649;
-  box-shadow: 0px 20px 38px 0px #3bcd92;
+  border: 2px dotted #fff;
+  /* box-shadow: 0px 20px 38px 0px #3bcd92; */
 }
 
 .mint-button p {
@@ -118,6 +118,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   margin-top: 100px;
+  margin-bottom: 60px;
 }
 
 .cards-container .card {
@@ -148,7 +149,7 @@ nav {
 }
 #card-two {
   background-color: #a39fa5;
-  box-shadow: 0px 20px 38px 0px #00000000;
+  box-shadow: 0px 20px 38px 0px #333;
 }
 #card-two p {
   font-family: Manrope;
@@ -262,6 +263,8 @@ nav {
 
 #discord-card .mint-button {
   background: #333;
+  cursor: pointer;
+
   border-radius: 80px;
   padding: 0px 87px;
 }
@@ -323,7 +326,7 @@ nav {
 
 .roadmap-header {
   font-family: Avenir Next;
-  font-size: 32px !important;
+  font-size: 27px !important;
   font-style: normal;
   font-weight: 600;
   letter-spacing: 0em;
@@ -345,12 +348,14 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .roadmap-item {
   display: flex;
   flex-direction: row;
   flex: 0.5;
+  min-height: 159px;
   align-items: flex-start;
 }
 .roadmap-item img {
@@ -367,8 +372,42 @@ nav {
   font-weight: 600;
   margin-right: 20px;
   margin-top: 0px;
+  margin-bottom: 6px;
   text-align: left;
   color: white;
+}
+.roadmap-header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.badge {
+  width: 116px;
+  height: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+}
+
+.badge p {
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 1px;
+}
+
+.badge-completed {
+  background: #219653;
+}
+
+.badge-progress {
+  background: #f2994a;
+}
+
+.discord-join {
+  background-color: #5623e8;
 }
 
 .home-fifth-container {
@@ -422,8 +461,8 @@ nav {
 .footer {
   width: 100%;
   height: 50vh;
-  margin-top: 300px;
   padding: 0px 10px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -509,6 +548,11 @@ nav {
     height: auto;
   }
 }
+.minting-date {
+  font-weight: 900 !important;
+  color: #925cb4 !important;
+  text-transform: uppercase;
+}
 
 @media only screen and (max-width: 601px) {
   .home-container {
@@ -550,8 +594,7 @@ nav {
   .mint-button {
     margin-bottom: 10px;
   }
-  .roadmap-header {
-  }
+
   .home-forth-container {
     height: auto;
   }

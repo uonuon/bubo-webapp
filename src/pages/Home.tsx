@@ -1,12 +1,15 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Fragment } from 'react'
 import Hands from '../assets/hands.svg'
 import Hat from '../assets/hat.svg'
 import Thor from '../assets/thor.svg'
 import Knight from '../assets/knight.svg'
 import N1 from '../assets/number1.svg'
-import CardImage from '../assets/card.png'
 
 export const Home: React.FC = () => {
+  const getABubo = "Don't have a bubo?"
+
   return (
     <Fragment>
       <div className="home-container">
@@ -22,8 +25,7 @@ export const Home: React.FC = () => {
         </div>
       </div>
       <div className="home-second-container">
-        <h1>Start Now</h1>
-        <p>Massa, massa in cursus in mi arcu phasellus erat.</p>
+        <h1>Your Heroic Journey Starts Now!</h1>
         <div className="cards-container">
           <div id="card-one" className="card">
             <img alt="hands" src={Hands} />
@@ -44,26 +46,32 @@ export const Home: React.FC = () => {
         </div>
       </div>
       <div className="home-third-container">
-        <h1>Your heroic journey starts now!</h1>
-        <p>Massa, massa in cursus in mi arcu phasellus erat..</p>
+        <h1>What Are You Waiting For?</h1>
         <div className="cards-container">
           <div id="discord-card" className="action-card">
-            <h3>Join bubo.gg</h3>
+            <h3>Join bubo city!</h3>
             <p>
               We welcome you to bubo family through our discord where we discuss
               future plans and our vision
             </p>
-            <div className="mint-button">
+            <div
+              onClick={(e) => {
+                e.preventDefault()
+                window.open('https://discord.gg/sREepDdeZT')
+              }}
+              className="mint-button"
+            >
               <p>Discord</p>
             </div>
           </div>
           <div id="mint-card" className="action-card">
-            <h3>Dont have a bubo?</h3>
+            <h3>{getABubo}</h3>
             <p>
-              We welcome you to bubo family through our discord where we discuss
-              future plans and our vision
+              Mint your first level 1 bubo from down below. Available at 10 STX
+              each.
             </p>
-            <div className="buttons-container">
+            <p className="minting-date">Minting starting at 21 Nov 2021</p>
+            {/* <div className="buttons-container">
               <div className="mint-button">
                 <p>Mint 1</p>
               </div>
@@ -73,7 +81,7 @@ export const Home: React.FC = () => {
               <div className="mint-button">
                 <p>Mint 10</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -90,25 +98,31 @@ export const Home: React.FC = () => {
             <div className="roadmap-item">
               <img alt="img" src={N1} />
               <div>
-                <p className="roadmap-header">🎉 Launch Bubo City</p>
-                <p>
-                  Role Selection: Each player should choose a role. One of the
-                  players must be the Dragon, and the other players may choose
-                  any of the 4 other roles (Mage, Hammer (Tank), Healer,
-                  Knight), with none of the 5 roles repeating.
-                </p>
-              </div>
-            </div>
-            <div className="roadmap-item">
-              <img alt="img" src={N1} />
-              <div>
-                <p className="roadmap-header">🤝 Level 1: Find Your Warriors</p>
+                <div className="roadmap-header-container">
+                  <p className="roadmap-header">
+                    🤝 Level 1: Find Your Warriors
+                  </p>
+                  <div className="badge badge-completed">
+                    <p>Completed</p>
+                  </div>
+                </div>
                 <p>
                   You will help the city’s maven to mint potential warriors out
                   of 10,000 Bubos, available at 10 STX. Each Bubo has
                   distinctive features and stamina that can’t be replicated nor
                   destroyed.
                 </p>
+              </div>
+            </div>
+            <div className="roadmap-item">
+              <img alt="img" src={N1} />
+              <div>
+                <div className="roadmap-header-container">
+                  <p className="roadmap-header">🏦 Join Community on Discord</p>
+                  <div className="badge discord-join">
+                    <p>Join Now</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -116,21 +130,14 @@ export const Home: React.FC = () => {
             <div className="roadmap-item">
               <img alt="img" src={N1} />
               <div>
-                <p className="roadmap-header">🏦 Join Community on Discord</p>
-                <p>
-                  You will help the city’s maven to mint potential warriors out
-                  of 10,000 Bubos, available at 10 STX. Each Bubo has
-                  distinctive features and stamina that can’t be replicated nor
-                  destroyed.
-                </p>
-              </div>
-            </div>
-            <div className="roadmap-item">
-              <img alt="img" src={N1} />
-              <div>
-                <p className="roadmap-header">
-                  🐒️ Level 2: Train Your Warriors
-                </p>
+                <div className="roadmap-header-container">
+                  <p className="roadmap-header">
+                    💪️ Level 2: Train Your Warriors
+                  </p>
+                  <div className="badge badge-progress">
+                    <p>In progess</p>
+                  </div>
+                </div>
                 <p>
                   First, you will need to combine your minted-cute Bubos to form
                   a unique team of Bubo warriors. All warriors then must be
@@ -139,12 +146,15 @@ export const Home: React.FC = () => {
                 </p>
               </div>
             </div>
-          </div>
-          <div className="roadmap-row">
             <div className="roadmap-item">
               <img alt="img" src={N1} />
               <div>
-                <p className="roadmap-header">⚖️ Level 3: Gear Up</p>
+                <div className="roadmap-header-container">
+                  <p className="roadmap-header">🗡️️ Level 3: Gear Up</p>
+                  <div className="badge badge-completed">
+                    <p>Next</p>
+                  </div>
+                </div>
                 <p>
                   By having enough stamina, your mighty warriors will be
                   reunited and combined once more to form the ultimate team and
@@ -153,10 +163,19 @@ export const Home: React.FC = () => {
                 </p>
               </div>
             </div>
+          </div>
+          <div className="roadmap-row">
             <div className="roadmap-item">
               <img alt="img" src={N1} />
               <div>
-                <p className="roadmap-header">👕 Level 4: Fight The Enemies</p>
+                <div className="roadmap-header-container">
+                  <p className="roadmap-header">
+                    ⚔️ Level 4: Fight The Enemies
+                  </p>
+                  <div className="badge badge-completed">
+                    <p>Next</p>
+                  </div>
+                </div>
                 <p>
                   This is your day! Your victory! Your geared warriors will be
                   ready to squish the battlefields to bring peace back home once
@@ -164,23 +183,8 @@ export const Home: React.FC = () => {
                 </p>
               </div>
             </div>
+            <div className="roadmap-item" />
           </div>
-        </div>
-      </div>
-      <div className="home-fifth-container">
-        <h1>Bubos</h1>
-        <p>
-          Do you have what it takes to ace the ghastly missions that awaits you?
-        </p>
-        <div className="cards">
-          <img src={CardImage} alt="card" />
-          <img src={CardImage} alt="card" />
-          <img src={CardImage} alt="card" />
-          <img src={CardImage} alt="card" />
-          <img src={CardImage} alt="card" />
-        </div>
-        <div className="mint-button">
-          <p>Mint</p>
         </div>
       </div>
     </Fragment>
