@@ -5,11 +5,14 @@ import Hands from '../assets/hands.svg'
 import Hat from '../assets/hat.svg'
 import Thor from '../assets/thor.svg'
 import Knight from '../assets/knight.svg'
-import N1 from '../assets/number1.svg'
+import N1 from '../assets/1.svg'
+import N2 from '../assets/2.svg'
+import N3 from '../assets/3.svg'
+import N4 from '../assets/4.svg'
+import N5 from '../assets/5.svg'
 
 export const Home: React.FC = () => {
   const getABubo = "Don't have a bubo?"
-
   return (
     <Fragment>
       <div className="home-container">
@@ -21,7 +24,7 @@ export const Home: React.FC = () => {
           city with the help of CUTE Bubo citizens.
         </p>
         <div className="mint-button">
-          <p>Mint</p>
+          <p>🚀 21 November 2021</p>
         </div>
       </div>
       <div className="home-second-container">
@@ -71,17 +74,6 @@ export const Home: React.FC = () => {
               each.
             </p>
             <p className="minting-date">Minting starting at 21 Nov 2021</p>
-            {/* <div className="buttons-container">
-              <div className="mint-button">
-                <p>Mint 1</p>
-              </div>
-              <div className="mint-button">
-                <p>Mint 5</p>
-              </div>
-              <div className="mint-button">
-                <p>Mint 10</p>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
@@ -102,8 +94,8 @@ export const Home: React.FC = () => {
                   <p className="roadmap-header">
                     🤝 Level 1: Find Your Warriors
                   </p>
-                  <div className="badge badge-completed">
-                    <p>Completed</p>
+                  <div className="badge badge-progress">
+                    <p>In progress</p>
                   </div>
                 </div>
                 <p>
@@ -115,11 +107,17 @@ export const Home: React.FC = () => {
               </div>
             </div>
             <div className="roadmap-item">
-              <img alt="img" src={N1} />
+              <img alt="img" src={N2} />
               <div>
                 <div className="roadmap-header-container">
                   <p className="roadmap-header">🏦 Join Community on Discord</p>
-                  <div className="badge discord-join">
+                  <div
+                    onClick={(e) => {
+                      e.preventDefault()
+                      window.open('https://discord.gg/sREepDdeZT')
+                    }}
+                    className="badge discord-join"
+                  >
                     <p>Join Now</p>
                   </div>
                 </div>
@@ -128,14 +126,14 @@ export const Home: React.FC = () => {
           </div>
           <div className="roadmap-row">
             <div className="roadmap-item">
-              <img alt="img" src={N1} />
+              <img alt="img" src={N3} />
               <div>
                 <div className="roadmap-header-container">
                   <p className="roadmap-header">
                     💪️ Level 2: Train Your Warriors
                   </p>
-                  <div className="badge badge-progress">
-                    <p>In progess</p>
+                  <div className="badge badge-completed">
+                    <p>Next</p>
                   </div>
                 </div>
                 <p>
@@ -147,7 +145,7 @@ export const Home: React.FC = () => {
               </div>
             </div>
             <div className="roadmap-item">
-              <img alt="img" src={N1} />
+              <img alt="img" src={N4} />
               <div>
                 <div className="roadmap-header-container">
                   <p className="roadmap-header">🗡️️ Level 3: Gear Up</p>
@@ -166,7 +164,7 @@ export const Home: React.FC = () => {
           </div>
           <div className="roadmap-row">
             <div className="roadmap-item">
-              <img alt="img" src={N1} />
+              <img alt="img" src={N5} />
               <div>
                 <div className="roadmap-header-container">
                   <p className="roadmap-header">

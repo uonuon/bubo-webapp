@@ -3,14 +3,14 @@
   "version": "0.0.1",
   "license": "MIT",
   "author": "Mina Philemon <minaf65@gmail.com",
-  "description": "A quick start Create React App template with React Router, Redux, TypeScript, Enzyme and custom ESlint configurations",
+  "description": "Do you have what it takes to ace the ghastly missions that awaits you?",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexandr-g/cra-template-typescript-redux",
+    "url": "https://github.com/uonuon/bubo-webapp",
     "directory": "/"
   },
   "bugs": {
-    "url": "https://github.com/alexandr-g/cra-template-typescript-redux/issues"
+    "url": "https://github.com/uonuon/bubo-webapp/issues"
   },
   "dependencies": {
     "@stacks/connect": "^6.2.1",

@@ -65,7 +65,7 @@ nav {
 }
 
 .home-container .mint-button {
-  background: #000;
+  background: white;
   border-radius: 80px;
   padding: 0px 120px;
   border: 2px dotted #fff;
@@ -79,7 +79,7 @@ nav {
   font-weight: 800;
   letter-spacing: 0em;
   text-align: center;
-  color: #1d6649;
+  color: black;
 }
 
 .home-second-container {
@@ -291,7 +291,7 @@ nav {
   font-weight: 800;
   /* letter-spacing: 0em; */
   text-align: center;
-  color: #1d6649;
+  color: #000;
 }
 
 .home-forth-container {
@@ -326,7 +326,7 @@ nav {
 
 .roadmap-header {
   font-family: Avenir Next;
-  font-size: 27px !important;
+  font-size: 25px !important;
   font-style: normal;
   font-weight: 600;
   letter-spacing: 0em;
@@ -441,11 +441,11 @@ nav {
 }
 
 .home-fifth-container .mint-button {
-  background: #c4f0de;
+  background: #fff;
   border-radius: 80px;
-  padding: 0px 120px;
-  border: 6px solid #1d6649;
-  box-shadow: 0px 20px 38px 0px #3bcd92;
+  padding: 0px 100px;
+  /* border: 6px solid #1d6649; */
+  box-shadow: 0px 20px 38px 0px #fff;
 }
 
 .mint-button p {
@@ -455,7 +455,7 @@ nav {
   font-weight: 800;
   letter-spacing: 0em;
   text-align: center;
-  color: #1d6649;
+  color: #000;
 }
 
 .footer {
@@ -524,6 +524,10 @@ nav {
   }
   .home-third-container .action-card {
     width: 500px;
+
+    padding: 25px 40px;
+
+    height: 405px;
   }
   #card-one {
     padding: 15px;
@@ -546,6 +550,7 @@ nav {
   }
   .home-third-container {
     height: auto;
+    padding: 82px 100px;
   }
 }
 .minting-date {
@@ -557,6 +562,13 @@ nav {
 @media only screen and (max-width: 601px) {
   .home-container {
     padding: 0px !important;
+  }
+  nav {
+    position: absolute;
+  }
+
+  .roadmap-header-container {
+    flex-direction: column;
   }
 
   .home-second-container {
