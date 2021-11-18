@@ -269,6 +269,10 @@ nav {
   padding: 0px 87px;
 }
 
+#discord-card .mint-button:hover {
+  background-color: #888484;
+}
+
 #discord-card .mint-button p {
   font-family: Manrope;
   font-size: 24px;
@@ -408,6 +412,11 @@ nav {
 
 .discord-join {
   background-color: #5623e8;
+  cursor: pointer;
+}
+
+.discord-join:hover {
+  background-color: #7e5ce0;
 }
 
 .home-fifth-container {
