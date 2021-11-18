@@ -24,7 +24,7 @@ export const Home: React.FC = () => {
           city with the help of CUTE Bubo citizens.
         </p>
         <div className="mint-button">
-          <p>🚀 Minting starts: 21 November 2021</p>
+          <p>🚀 Minting starts: 22 November 2021</p>
         </div>
       </div>
       <div className="home-second-container">
