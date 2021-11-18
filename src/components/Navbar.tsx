@@ -1,20 +1,86 @@
-import React from 'react'
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import { Person } from '@stacks/profile'
+import { useAtom } from 'jotai'
+import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+import {
+  useConnect,
+  userSessionState,
+  userDataState,
+} from '../hooks/useConnect'
 
-export const Navbar: React.FC = () => (
-  <nav>
-    <div className="nav-wrapper darken-1 px1">
-      <NavLink to="/" className="brand-logo">
-        Bubo
-      </NavLink>
-      {/* <ul className="right hide-on-med-and-down">
-        <li cy-data="home-nav-link">
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/about">About</NavLink>
-        </li>
-      </ul> */}
-    </div>
-  </nav>
-)
+export function shortenHex(hex: string, length = 4) {
+  return `${hex.substring(0, length + 2)}…${hex.substring(hex.length - length)}`
+}
+
+export const truncateMiddle = (input: string, offset = 5): string => {
+  if (!input) return ''
+  // hashes
+  if (input.startsWith('0x')) {
+    return shortenHex(input, offset)
+  }
+  // for contracts
+  if (input.includes('.')) {
+    const parts = input.split('.')
+    const start = parts[0]?.substr(0, offset)
+    const end = parts[0]?.substr(parts[0].length - offset, parts[0].length)
+    return `${start}…${end}.${parts[1]}`
+  }
+  // everything else
+  const start = input?.substr(0, offset)
+  const end = input?.substr(input.length - offset, input.length)
+  return `${start}…${end}`
+}
+
+export const Navbar: React.FC = () => {
+  const [userSession] = useAtom(userSessionState)
+  const { handleOpenAuth, handleSignOut } = useConnect()
+  const [, setUserData] = useAtom(userDataState)
+  const getPerson = () => {
+    if (userSession.isUserSignedIn()) {
+      return new Person(userSession.loadUserData().profile)
+    }
+    return null
+  }
+
+  useEffect(() => {
+    if (userSession?.isUserSignedIn()) {
+      setUserData((userSession as any).loadUserData())
+    } else if (userSession.isSignInPending()) {
+      userSession.handlePendingSignIn()
+    }
+  }, [userSession, setUserData])
+
+  return (
+    <nav>
+      <div className="nav-wrapper darken-1 px1">
+        <NavLink to="/" className="brand-logo">
+          Bubo
+        </NavLink>
+        <ul className="right hide-on-med-and-down">
+          {userSession.isUserSignedIn() ? (
+            <li>
+              {/* <NavLink to="/">Home</NavLink> */}
+              {truncateMiddle(
+                (getPerson() as any).profile().stxAddress.mainnet,
+                4
+              )}
+            </li>
+          ) : (
+            <div className="connect-button" onClick={handleOpenAuth}>
+              {/* <NavLink to="/">Home</NavLink> */}
+              <p>Connect Wallet</p>
+            </div>
+          )}
+
+          {/* <NavLink to="/about">About</NavLink> */}
+          {userSession.isUserSignedIn() && (
+            <li onClick={handleSignOut}>Logout</li>
+          )}
+        </ul>
+      </div>
+    </nav>
+  )
+}

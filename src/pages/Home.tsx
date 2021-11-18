@@ -73,7 +73,7 @@ export const Home: React.FC = () => {
               Mint your first level 1 bubo from down below. Available at 10 STX
               each.
             </p>
-            <p className="minting-date">Minting starting at 21 Nov 2021</p>
+            <p className="minting-date">Minting starting at 22 Nov 2021</p>
           </div>
         </div>
       </div>

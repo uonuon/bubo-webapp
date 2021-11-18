@@ -34,6 +34,27 @@ nav {
   box-shadow: none;
 }
 
+nav ul li {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.connect-button {
+  background-color: white;
+  border-radius: 32px;
+  font-weight: 700;
+  width: 160px;
+  cursor: pointer;
+  color: black;
+  text-align: center;
+  height: 46px;
+  margin: 10px 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 /* HERE GOES THE HOME*/
 .home-container {
   width: 100%;
