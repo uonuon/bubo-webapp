@@ -17,6 +17,25 @@ export const useCollections = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [hasNextPage, setHasNextPage] = useState(true)
   const [hasError, setHasError] = useState(false)
+  const [ownedCollections, setOwnedCollections] = useState<
+    BuboCityImage[] | []
+  >([])
+
+  const getOwnedCollection = (ids: any) => {
+    try {
+      fetch(
+        `https://api.bubo.gg/api/v1/owls/metadata?ids[]=${ids.join('&ids[]=')}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          if (data && data.data) {
+            setOwnedCollections(data.data)
+          }
+        })
+    } catch (error) {
+      setHasError(true)
+    }
+  }
 
   const getCollection = (page: number) => {
     try {
@@ -48,7 +67,9 @@ export const useCollections = () => {
     getCollection,
     setStaminaState,
     collection,
+    ownedCollections,
     hasError,
+    getOwnedCollection,
     hasNextPage,
     isLoading,
     setColleciton,

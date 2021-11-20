@@ -1,6 +1,17 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Fragment } from 'react'
+import { useConnect } from '@stacks/connect-react'
+import { StacksMainnet } from '@stacks/network'
+import {
+  FungibleConditionCode,
+  // makeStandardNonFungiblePostCondition,
+  makeStandardSTXPostCondition,
+  // NonFungibleConditionCode,
+  PostConditionMode,
+} from '@stacks/transactions'
+import { useAtom } from 'jotai'
+import BigNum from 'bn.js'
 import Hands from '../assets/hands.svg'
 import Hat from '../assets/hat.svg'
 import Thor from '../assets/thor.svg'
@@ -10,9 +21,96 @@ import N2 from '../assets/2.svg'
 import N3 from '../assets/3.svg'
 import N4 from '../assets/4.svg'
 import N5 from '../assets/5.svg'
+import { profileState, useConnect as connect } from '../hooks/useConnect'
 
 export const Home: React.FC = () => {
+  // const [isLoading, setIsLoading] = useState(false)
   const getABubo = "Don't have a bubo?"
+  const { doContractCall } = useConnect()
+  const [profile] = useAtom(profileState)
+  const { handleOpenAuth } = connect()
+
+  // TODO MINT / CONNECT
+  const mint = async () => {
+    await doContractCall({
+      contractAddress: 'ST14XMM34Q08NRNC2P29N64QFG0ZAFE2B8RS84D4P',
+      contractName: 'test_nft_contract_3',
+      functionName: 'mint',
+      functionArgs: [],
+      network: new StacksMainnet(),
+      postConditionMode: PostConditionMode.Allow,
+      postConditions: [
+        makeStandardSTXPostCondition(
+          profile.stxAddress.testnet,
+          FungibleConditionCode.Equal,
+          new BigNum(10000000)
+        ),
+      ],
+      onFinish: (data) => {
+        console.log(data)
+      },
+      onCancel: () => {
+        console.log('cancelled')
+      },
+    })
+  }
+
+  const mintFn = async (mintVal: any) => {
+    if (profile) {
+      mintVal()
+    } else {
+      handleOpenAuth()
+    }
+  }
+
+  const mintTen = async () => {
+    await doContractCall({
+      contractAddress: 'ST14XMM34Q08NRNC2P29N64QFG0ZAFE2B8RS84D4P',
+      contractName: 'test_nft_contract_3',
+      functionName: 'mint-ten',
+      functionArgs: [],
+      network: new StacksMainnet(),
+      postConditionMode: PostConditionMode.Allow,
+      postConditions: [
+        makeStandardSTXPostCondition(
+          profile.stxAddress.testnet,
+          FungibleConditionCode.Equal,
+          new BigNum(100000000)
+        ),
+      ],
+      onFinish: (data) => {
+        console.log(data)
+      },
+      onCancel: () => {
+        console.log('cancelled')
+      },
+    })
+  }
+
+  const mintFive = async () => {
+    await doContractCall({
+      contractAddress: 'ST14XMM34Q08NRNC2P29N64QFG0ZAFE2B8RS84D4P',
+      contractName: 'test_nft_contract_3',
+      functionName: 'mint-five',
+      functionArgs: [],
+      network: new StacksMainnet(),
+      postConditionMode: PostConditionMode.Allow,
+      postConditions: [
+        makeStandardSTXPostCondition(
+          profile.stxAddress.testnet,
+          FungibleConditionCode.Equal,
+          new BigNum(50000000)
+        ),
+      ],
+      onFinish: (data) => {
+        console.log(data)
+      },
+      onCancel: () => {
+        console.log('cancelled')
+      },
+    })
+  }
+
   return (
     <Fragment>
       <div className="home-container">
@@ -23,8 +121,13 @@ export const Home: React.FC = () => {
           your way through the unknown, fight frightful enemies, and save the
           city with the help of CUTE Bubo citizens.
         </p>
-        <div className="mint-button">
-          <p>🚀 Minting starts: 22 November 2021</p>
+        <div
+          onClick={() => {
+            mintFn(mint)
+          }}
+          className="mint-button"
+        >
+          <p>Mint Now</p>
         </div>
       </div>
       <div className="home-second-container">
@@ -55,7 +158,7 @@ export const Home: React.FC = () => {
             <h3>Join bubo city!</h3>
             <p>
               We welcome you to bubo family through our discord where we discuss
-              future plans and our vision
+              future plans and our vision.
             </p>
             <div
               onClick={(e) => {
@@ -67,13 +170,40 @@ export const Home: React.FC = () => {
               <p>Discord</p>
             </div>
           </div>
+
           <div id="mint-card" className="action-card">
             <h3>{getABubo}</h3>
             <p>
               Mint your first level 1 bubo from down below. Available at 10 STX
               each.
             </p>
-            <p className="minting-date">Minting starting at 22 Nov 2021</p>
+            {/* <p className="minting-date">Minting starting at 21 Nov 2021</p> */}
+            <div className="buttons-container">
+              <div
+                onClick={() => {
+                  mintFn(mint)
+                }}
+                className="mint-button"
+              >
+                <p>Mint 1</p>
+              </div>
+              <div
+                onClick={() => {
+                  mintFn(mintFive)
+                }}
+                className="mint-button"
+              >
+                <p>Mint 5</p>
+              </div>
+              <div
+                onClick={() => {
+                  mintFn(mintTen)
+                }}
+                className="mint-button"
+              >
+                <p>Mint 10</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

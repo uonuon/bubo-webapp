@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -40,7 +41,7 @@ export const Collection: React.FC = () => {
     }, 500)
   }, [page, staminaState])
   const loader: any = useRef(null)
-
+  // TODO: ATTRIBUTES
   // here we handle what happens when user scrolls to Load More div
   // in this case we just update page variable
   const handleObserver = (entities: any) => {
@@ -67,8 +68,11 @@ export const Collection: React.FC = () => {
   return (
     <Fragment>
       <div className="collections">
-        <h1>All Characters</h1>
-        <p>Massa, massa in cursus in mi arcu phasellus erat.</p>
+        <h1>Bubos Collection</h1>
+        <p>
+          Each bubo has its stamina value. stamina is detremined by the
+          uniquness of each bubo attributes.
+        </p>
         <div className="badges">
           <div
             onClick={() => {
@@ -116,6 +120,9 @@ export const Collection: React.FC = () => {
             <div className="game-cards-container">
               {collection.length > 0 &&
                 collection.map((collection: BuboCityImage) => {
+                  const Stamina = collection.attributes.find((attribute) => {
+                    return attribute.trait_type === 'Stamina'
+                  })
                   return (
                     <div className="game-card">
                       <img
@@ -123,6 +130,10 @@ export const Collection: React.FC = () => {
                         src={collection.image_url}
                         alt="bubo"
                       />
+                      <div className="game-content">
+                        <p>Bubo #{collection.id}</p>
+                        <p>Stamina: {Stamina?.value}</p>
+                      </div>
                     </div>
                   )
                 })}

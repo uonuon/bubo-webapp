@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Person } from '@stacks/profile'
 import { useAtom } from 'jotai'
 import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
@@ -9,6 +8,7 @@ import {
   useConnect,
   userSessionState,
   userDataState,
+  profileState,
 } from '../hooks/useConnect'
 
 export function shortenHex(hex: string, length = 4) {
@@ -36,14 +36,14 @@ export const truncateMiddle = (input: string, offset = 5): string => {
 
 export const Navbar: React.FC = () => {
   const [userSession] = useAtom(userSessionState)
+  const [profile]: any = useAtom(profileState)
   const { handleOpenAuth, handleSignOut } = useConnect()
   const [, setUserData] = useAtom(userDataState)
-  const getPerson = () => {
-    if (userSession.isUserSignedIn()) {
-      return new Person(userSession.loadUserData().profile)
-    }
-    return null
-  }
+
+  // useEffect(() => {
+  //   setProfile((getPerson() as any).profile())
+  // }, [userSession])
+
   useEffect(() => {
     if (userSession?.isUserSignedIn()) {
       setUserData((userSession as any).loadUserData())
@@ -68,11 +68,9 @@ export const Navbar: React.FC = () => {
           </li>
           {userSession.isUserSignedIn() ? (
             <li>
-              {/* <NavLink to="/">Home</NavLink> */}
-              {truncateMiddle(
-                (getPerson() as any).profile().stxAddress.mainnet,
-                4
-              )}
+              <NavLink to="/profile">
+                {profile ? truncateMiddle(profile.stxAddress.mainnet, 4) : ''}
+              </NavLink>
             </li>
           ) : (
             <div className="connect-button" onClick={handleOpenAuth}>

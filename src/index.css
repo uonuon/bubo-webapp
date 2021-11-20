@@ -56,6 +56,15 @@ nav {
   flex: 1;
 }
 
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  color: #fff;
+  flex: 1;
+}
+
 .badges {
   display: flex;
   flex-direction: row;
@@ -114,6 +123,7 @@ nav {
   width: 100%;
   /* margin-left: 3.1%; */
   margin-top: 4%;
+  border-bottom: 20px solid #718099;
   -webkit-clip-path: polygon(
     3% 0,
     75% 0,
@@ -151,9 +161,15 @@ nav {
 }
 
 .game-content {
-  padding: 0px 20px;
+  padding: 0px 30px;
+  margin-top: -18px;
 }
-
+.game-content p {
+  margin: 4px 0px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
 .connect-button {
   background-color: white;
   border-radius: 32px;
@@ -170,6 +186,9 @@ nav {
   justify-content: center;
 }
 
+.container {
+  min-height: 100vh;
+}
 /* HERE GOES THE HOME*/
 .home-container {
   width: 100%;
@@ -201,11 +220,12 @@ nav {
 }
 
 .home-container .mint-button {
-  background: white;
+  background: #c4f0de;
   border-radius: 80px;
+  cursor: pointer;
   padding: 0px 120px;
-  border: 2px dotted #fff;
-  /* box-shadow: 0px 20px 38px 0px #3bcd92; */
+  border: 6px solid #3bcd92;
+  /* box-shadow: 0px 5px 5px 0px #3bcd92; */
 }
 
 .mint-button p {
@@ -215,7 +235,7 @@ nav {
   font-weight: 800;
   letter-spacing: 0em;
   text-align: center;
-  color: black;
+  color: #1d6649;
 }
 
 .home-second-container {
@@ -284,9 +304,10 @@ nav {
   color: #219868;
 }
 #card-two {
-  background-color: #a39fa5;
-  box-shadow: 0px 20px 38px 0px #333;
+  background-color: #9fdfea;
+  box-shadow: 0px 20px 38px 0px #a0deea;
 }
+
 #card-two p {
   font-family: Manrope;
   font-size: 24px;
@@ -400,7 +421,6 @@ nav {
 #discord-card .mint-button {
   background: #333;
   cursor: pointer;
-
   border-radius: 80px;
   padding: 0px 87px;
 }
@@ -419,19 +439,24 @@ nav {
 }
 
 #mint-card .mint-button {
-  background: #3bcd92;
+  background: transparent;
   border-radius: 80px;
+  cursor: pointer;
+  border: 1px solid #925cb4;
   padding: 0px 36px;
+}
+#mint-card .mint-button:hover {
+  background: rgb(146 92 180 / 30%);
 }
 
 #mint-card .mint-button p {
   font-family: Manrope;
-  font-size: 24px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 800;
   /* letter-spacing: 0em; */
   text-align: center;
-  color: #000;
+  color: #925cb4;
 }
 
 .home-forth-container {
@@ -600,7 +625,7 @@ nav {
   font-weight: 800;
   letter-spacing: 0em;
   text-align: center;
-  color: #000;
+  color: #1d6649;
 }
 .active-nav {
   background-color: rgba(0, 0, 0, 0.4) !important;
