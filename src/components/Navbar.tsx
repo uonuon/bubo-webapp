@@ -44,22 +44,28 @@ export const Navbar: React.FC = () => {
     }
     return null
   }
-
   useEffect(() => {
     if (userSession?.isUserSignedIn()) {
       setUserData((userSession as any).loadUserData())
     } else if (userSession.isSignInPending()) {
       userSession.handlePendingSignIn()
     }
-  }, [userSession, setUserData])
+  }, [userSession, setUserData, userSession.isUserSignedIn()])
 
   return (
     <nav>
       <div className="nav-wrapper darken-1 px1">
         <NavLink to="/" className="brand-logo">
-          Bubo
+          Bubo.gg
         </NavLink>
+        {/* <ul id="nav-mobile" className="left hide-on-med-and-down">
+         
+        </ul> */}
+
         <ul className="right hide-on-med-and-down">
+          <li>
+            <NavLink to="/collection">Collection</NavLink>
+          </li>
           {userSession.isUserSignedIn() ? (
             <li>
               {/* <NavLink to="/">Home</NavLink> */}

@@ -39,6 +39,121 @@ nav ul li {
   cursor: pointer;
 }
 
+nav {
+  position: fixed;
+  background-color: #050919;
+  padding: 8px 100px;
+  box-shadow: none;
+  z-index: 100;
+}
+
+.collections {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  color: #fff;
+  flex: 1;
+}
+
+.badges {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}
+
+.bubo-badge {
+  width: 170px;
+  padding: 0px 16px;
+  font-family: Manrope;
+  cursor: pointer;
+  font-size: 20px;
+  margin: 2px;
+  font-style: normal;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 16px;
+  color: #fff;
+}
+
+.bubo-badge:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.badge-active {
+  background-color: #000;
+}
+.image-scrollable-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex: 1;
+  width: 100%;
+  max-height: 100vh;
+}
+.game-cards-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+.game-card {
+  width: 247px;
+  background-image: url('./assets/card-img.png');
+  background-size: cover;
+  height: 365px;
+  margin: 4px;
+}
+
+.game-card .bubo-image {
+  width: 100%;
+  /* margin-left: 3.1%; */
+  margin-top: 4%;
+  -webkit-clip-path: polygon(
+    3% 0,
+    75% 0,
+    78% 5%,
+    75% -13%,
+    92% 3%,
+    99% 7%,
+    98% 26%,
+    95% 29%,
+    98% 38%,
+    94.5% 94%,
+    4% 94%,
+    4% 33%,
+    6% 32%,
+    4% 29%,
+    3% 1%
+  );
+  clip-path: polygon(
+    3% 0,
+    75% 0,
+    78% 5%,
+    75% -13%,
+    92% 3%,
+    99% 7%,
+    98% 26%,
+    95% 29%,
+    98% 38%,
+    94.5% 94%,
+    4% 94%,
+    4% 33%,
+    6% 32%,
+    4% 29%,
+    3% 1%
+  );
+}
+
+.game-content {
+  padding: 0px 20px;
+}
+
 .connect-button {
   background-color: white;
   border-radius: 32px;
@@ -487,7 +602,16 @@ nav ul li {
   text-align: center;
   color: #000;
 }
-
+.active-nav {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  border-radius: 20px;
+}
+.loading {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .footer {
   width: 100%;
   height: 50vh;
@@ -595,6 +719,9 @@ nav ul li {
   }
   nav {
     position: absolute;
+  }
+  .badges {
+    flex-direction: column;
   }
   h1 {
     font-size: 33px !important;
