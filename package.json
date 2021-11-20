@@ -13,6 +13,9 @@
     "url": "https://github.com/uonuon/bubo-webapp/issues"
   },
   "dependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.16.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.16.0",
+    "@babel/plugin-syntax-bigint": "^7.8.3",
     "@stacks/blockchain-api-client": "^0.71.2",
     "@stacks/connect": "^6.2.1",
     "@stacks/connect-react": "^13.0.0",
@@ -26,6 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^4.8.1",
     "@typescript-eslint/parser": "^4.8.1",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.0",
+    "customize-cra": "^1.0.0",
     "enzyme": "^3.11.0",
     "eslint": "^7.11.0",
     "eslint-config-airbnb-typescript": "^12.0.0",
@@ -37,12 +41,12 @@
     "eslint-plugin-react-hooks": "^4.0.8",
     "jotai": "^1.4.3",
     "prettier": "^2.0.0",
-    "react-scripts": "4.0.3",
     "react": "^17.0.0",
+    "react-app-rewired": "2.1.8",
     "react-dom": "^17.0.0",
     "react-infinite-scroll-hook": "^4.0.1",
     "react-router-dom": "^5.1.2",
-    "react-app-rewired": "2.1.8",
+    "react-scripts": "4.0.3",
     "react-spinners": "^0.11.0",
     "typescript": "~4.2.0"
   },
@@ -58,28 +62,28 @@
     "fix": "eslint src --ext .js,.jsx,.ts,.tsx  --fix",
     "format": "prettier --write src/**/*.{ts,tsx}"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     }
   },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 2 chrome version",
+      "last 2 firefox version",
+      "last 2 safari version",
+      "last 2 edge version"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version",
-      ">0.3%",
-      "not ie 11",
-      "not dead",
-      "not op_mini all"
+      "last 1 safari version"
     ]
   },
   "devDependencies": {
