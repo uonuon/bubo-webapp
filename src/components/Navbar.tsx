@@ -65,16 +65,49 @@ export const Navbar: React.FC = () => {
         {/* <ul id="nav-mobile" className="left hide-on-med-and-down">
          
         </ul> */}
-
         <ul className="right hide-on-med-and-down">
+          <li>
+            <NavLink to="/lore">Lore</NavLink>
+          </li>
           <li>
             <NavLink to="/collection">Collection</NavLink>
           </li>
           {userSession.isUserSignedIn() ? (
             <li>
               <NavLink to="/profile">
-                {profile ? truncateMiddle(profile.stxAddress.mainnet, 4) : ''}
+                {' '}
+                {profile ? truncateMiddle(profile.stxAddress.mainnet, 10) : ''}
               </NavLink>
+              {/* <NavLink to="/profile">
+                <div className="profileContainer">
+                  <p className="profile-con">
+                    {profile
+                      ? truncateMiddle(profile.stxAddress.mainnet, 10)
+                      : ''}
+                  </p>
+                  <p>10</p>
+                </div>
+                <div
+                  className="progress-bar"
+                  style={{
+                    width: 277,
+                    height: 16,
+                    borderRadius: 16,
+                    backgroundColor: '#752738',
+                    marginTop: -18,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 277 - 60,
+                      height: 16,
+                      borderRadius: 16,
+                      backgroundColor: '#e54555',
+                    }}
+                    className="progress-fill"
+                  />
+                </div>
+              </NavLink> */}
             </li>
           ) : (
             <div className="connect-button" onClick={handleOpenAuth}>

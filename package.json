@@ -16,6 +16,7 @@
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.16.0",
     "@babel/plugin-proposal-optional-chaining": "^7.16.0",
     "@babel/plugin-syntax-bigint": "^7.8.3",
+    "@ramonak/react-progress-bar": "^4.2.0",
     "@stacks/blockchain-api-client": "^0.71.2",
     "@stacks/connect": "^6.2.1",
     "@stacks/connect-react": "^13.0.0",

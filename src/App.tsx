@@ -15,6 +15,7 @@ import { Collection } from './pages/Collection'
 
 import { Home } from './pages/Home'
 import { Profile } from './pages/Profile'
+import { Lore } from './pages/Lore'
 
 const App: React.FC = () => {
   const [userSession] = useAtom(userSessionState)
@@ -50,6 +51,9 @@ const App: React.FC = () => {
           </Switch>
           <Switch>
             <Route path="/profile" component={Profile} exact />
+          </Switch>
+          <Switch>
+            <Route path="/lore" component={Lore} exact />
           </Switch>
         </div>
         <div className="footer">

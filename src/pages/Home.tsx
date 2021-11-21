@@ -31,7 +31,6 @@ export const Home: React.FC = () => {
   const [profile] = useAtom(profileState)
   const { handleOpenAuth } = connect()
 
-  // TODO MINT / CONNECT
   const mint = async () => {
     await doContractCall({
       contractAddress: 'SP3N81TKV43PN24NPHNNM8BBNQJ51Q31HE9G0GC46',
@@ -39,10 +38,10 @@ export const Home: React.FC = () => {
       functionName: 'mint',
       functionArgs: [],
       network: new StacksMainnet(),
-      postConditionMode: PostConditionMode.Allow,
+      postConditionMode: PostConditionMode.Deny,
       postConditions: [
         makeStandardSTXPostCondition(
-          profile.stxAddress.testnet,
+          profile.stxAddress.mainnet,
           FungibleConditionCode.Equal,
           new BigNum(10000000)
         ),
@@ -71,10 +70,10 @@ export const Home: React.FC = () => {
       functionName: 'mint-ten',
       functionArgs: [],
       network: new StacksMainnet(),
-      postConditionMode: PostConditionMode.Allow,
+      postConditionMode: PostConditionMode.Deny,
       postConditions: [
         makeStandardSTXPostCondition(
-          profile.stxAddress.testnet,
+          profile.stxAddress.mainnet,
           FungibleConditionCode.Equal,
           new BigNum(100000000)
         ),
@@ -95,10 +94,10 @@ export const Home: React.FC = () => {
       functionName: 'mint-five',
       functionArgs: [],
       network: new StacksMainnet(),
-      postConditionMode: PostConditionMode.Allow,
+      postConditionMode: PostConditionMode.Deny,
       postConditions: [
         makeStandardSTXPostCondition(
-          profile.stxAddress.testnet,
+          profile.stxAddress.mainnet,
           FungibleConditionCode.Equal,
           new BigNum(50000000)
         ),
