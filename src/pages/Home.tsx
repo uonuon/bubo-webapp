@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+// Stamina / xxx minted
 import React, { Fragment } from 'react'
 import { useConnect } from '@stacks/connect-react'
 import { StacksMainnet } from '@stacks/network'
@@ -33,8 +34,8 @@ export const Home: React.FC = () => {
   // TODO MINT / CONNECT
   const mint = async () => {
     await doContractCall({
-      contractAddress: 'ST14XMM34Q08NRNC2P29N64QFG0ZAFE2B8RS84D4P',
-      contractName: 'test_nft_contract_3',
+      contractAddress: 'SP3N81TKV43PN24NPHNNM8BBNQJ51Q31HE9G0GC46',
+      contractName: 'bubo',
       functionName: 'mint',
       functionArgs: [],
       network: new StacksMainnet(),
@@ -65,8 +66,8 @@ export const Home: React.FC = () => {
 
   const mintTen = async () => {
     await doContractCall({
-      contractAddress: 'ST14XMM34Q08NRNC2P29N64QFG0ZAFE2B8RS84D4P',
-      contractName: 'test_nft_contract_3',
+      contractAddress: 'SP3N81TKV43PN24NPHNNM8BBNQJ51Q31HE9G0GC46',
+      contractName: 'bubo',
       functionName: 'mint-ten',
       functionArgs: [],
       network: new StacksMainnet(),
@@ -89,8 +90,8 @@ export const Home: React.FC = () => {
 
   const mintFive = async () => {
     await doContractCall({
-      contractAddress: 'ST14XMM34Q08NRNC2P29N64QFG0ZAFE2B8RS84D4P',
-      contractName: 'test_nft_contract_3',
+      contractAddress: 'SP3N81TKV43PN24NPHNNM8BBNQJ51Q31HE9G0GC46',
+      contractName: 'bubo',
       functionName: 'mint-five',
       functionArgs: [],
       network: new StacksMainnet(),

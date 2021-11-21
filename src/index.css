@@ -1,3 +1,15 @@
+:root {
+  --brand-color: hsl(240, 95%, 60%);
+  --brand-shade-dark: hsl(240, 75%, 10%);
+  --brand-accent-light: hsl(240, 80%, 75%);
+  --brand-text-inverse: hsl(240, 5%, 95%);
+
+  --snackbar-bg-success: hsl(120, 80%, 50%);
+  --snackbar-bg-info: hsl(240, 80%, 55%);
+  --snackbar-bg-error: hsl(0, 80%, 45%);
+  --snackbar-bg-warning: hsl(60, 80%, 50%);
+  --snackbar-bg-question: hsl(300, 80%, 45%);
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -23,6 +35,77 @@ code {
 .group {
   display: flex;
   justify-content: space-between;
+}
+
+.Snackbar {
+  position: fixed;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.5em 1em;
+  top: 0;
+  left: 50%;
+  height: 3em;
+  transform: translate(-50%, -3em);
+}
+
+.Snackbar.success {
+  background-color: var(--snackbar-bg-success);
+}
+.Snackbar.info {
+  background-color: var(--snackbar-bg-info);
+}
+.Snackbar.error {
+  background-color: var(--snackbar-bg-error);
+}
+.Snackbar.warning {
+  background-color: var(--snackbar-bg-warning);
+}
+.Snackbar.question {
+  background-color: var(--snackbar-bg-question);
+}
+
+.Snackbar__icon {
+  display: block;
+  font-size: 2em;
+  margin-right: 1em;
+}
+
+.Snackbar__message {
+  display: block;
+  font-size: 1em;
+  margin-right: 2em;
+}
+
+.Snackbar.visible {
+  visibility: visible;
+  animation: fadeIn 0.25s ease-in forwards, fadeOut 0.25s ease-in 2.75s;
+}
+
+.Snackbar.hidden {
+  visibility: hidden;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: translate(-50%, -3em);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -3em);
+    opacity: 0;
+  }
 }
 
 /* HERE GOES THE NAV*/
@@ -167,6 +250,16 @@ nav {
 .game-content p {
   margin: 4px 0px;
   font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.game-content-back {
+  padding: 15px 30px;
+}
+.game-content-back p {
+  margin: 4px 0px;
+  font-size: 16px;
   font-weight: 700;
   color: #fff;
 }

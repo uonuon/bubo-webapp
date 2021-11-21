@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+import { Person } from '@stacks/profile'
 import { useAtom } from 'jotai'
 import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
@@ -36,17 +37,20 @@ export const truncateMiddle = (input: string, offset = 5): string => {
 
 export const Navbar: React.FC = () => {
   const [userSession] = useAtom(userSessionState)
-  const [profile]: any = useAtom(profileState)
+  const [profile, setProfile] = useAtom(profileState)
   const { handleOpenAuth, handleSignOut } = useConnect()
   const [, setUserData] = useAtom(userDataState)
 
-  // useEffect(() => {
-  //   setProfile((getPerson() as any).profile())
-  // }, [userSession])
-
+  const getPerson = () => {
+    if (userSession.isUserSignedIn()) {
+      setProfile(new Person(userSession.loadUserData().profile).profile())
+    }
+    return null
+  }
   useEffect(() => {
     if (userSession?.isUserSignedIn()) {
       setUserData((userSession as any).loadUserData())
+      getPerson()
     } else if (userSession.isSignInPending()) {
       userSession.handlePendingSignIn()
     }

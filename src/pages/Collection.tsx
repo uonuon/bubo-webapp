@@ -3,8 +3,8 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Fragment, useEffect, useRef, useState } from 'react'
-// import Bubo from '../assets/50.png'
 import { PropagateLoader } from 'react-spinners'
+import ReactCardFlip from 'react-card-flip'
 import { BuboCityImage, useCollections } from '../hooks/useCollection'
 
 const usePrevious = <T extends unknown>(value: T): T | undefined => {
@@ -25,7 +25,10 @@ export const Collection: React.FC = () => {
   } = useCollections()
   const [page, setPages] = useState(1)
   const prevStamina = usePrevious({ staminaState })
-
+  const [flipped, setFlipped] = useState({
+    isFlipped: false,
+    id: '0',
+  })
   useEffect(() => {
     if (
       prevStamina?.staminaState !== undefined &&
@@ -124,17 +127,53 @@ export const Collection: React.FC = () => {
                     return attribute.trait_type === 'Stamina'
                   })
                   return (
-                    <div className="game-card">
-                      <img
-                        className="bubo-image"
-                        src={collection.image_url}
-                        alt="bubo"
-                      />
-                      <div className="game-content">
-                        <p>Bubo #{collection.id}</p>
-                        <p>Stamina: {Stamina?.value}</p>
+                    <ReactCardFlip
+                      isFlipped={
+                        flipped.isFlipped && collection.id === flipped.id
+                      }
+                      flipDirection="horizontal"
+                    >
+                      <div
+                        key={collection.id}
+                        className="flip-container game-card"
+                        onClick={() =>
+                          setFlipped({
+                            isFlipped: !flipped.isFlipped,
+                            id: collection.id,
+                          })
+                        }
+                      >
+                        <img
+                          className="bubo-image"
+                          src={collection.image_url}
+                          alt="bubo"
+                        />
+                        <div className="game-content">
+                          <p>Bubo #{collection.id}</p>
+                          <p>Stamina: {Stamina?.value}</p>
+                        </div>
                       </div>
-                    </div>
+                      <div
+                        key={collection.id}
+                        className="flip-container game-card"
+                        onClick={() =>
+                          setFlipped({
+                            isFlipped: !flipped.isFlipped,
+                            id: collection.id,
+                          })
+                        }
+                      >
+                        <div className="game-content-back">
+                          {collection.attributes.map((attr) => {
+                            return (
+                              <p>
+                                {attr.trait_type}: {attr.value}
+                              </p>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    </ReactCardFlip>
                   )
                 })}
             </div>

@@ -1,8 +1,8 @@
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { Fragment, useEffect } from 'react'
-// import { AddressNftListResponseToJSON } from '@stacks/blockchain-api-client'
 import { useAtom } from 'jotai'
-// import { accountsApi } from '../constants'
 import { profileState } from '../hooks/useConnect'
 import { accountsApi } from '../constants'
 import { BuboCityImage, useCollections } from '../hooks/useCollection'
@@ -11,12 +11,24 @@ export const Profile: React.FC = () => {
   const [profile] = useAtom(profileState)
   const { getOwnedCollection, ownedCollections } = useCollections()
 
+  const getOwnedNfts = async () => {
+    if (profile) {
+      const ownedNFT = await accountsApi.getAccountNft({
+        principal: profile.stxAddress.mainnet,
+      })
+      const ids = ownedNFT.nft_events.map((nft) => {
+        if (nft.asset_identifier === '') {
+          return +nft.value.repr.substr(1)
+        }
+      })
+      if (ids.length > 0) {
+        getOwnedCollection(ids)
+      }
+    }
+  }
   useEffect(() => {
-    const ownedNFT = accountsApi.getAccountNft({
-      principal: profile.stxAddress.testnet,
-    })
-    getOwnedCollection([1, 3, 4, 5, 6])
-  }, [])
+    getOwnedNfts()
+  }, [profile])
 
   return (
     <Fragment>
