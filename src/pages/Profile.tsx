@@ -16,8 +16,12 @@ export const Profile: React.FC = () => {
       const ownedNFT = await accountsApi.getAccountNft({
         principal: profile.stxAddress.mainnet,
       })
+      console.log(ownedNFT)
       const ids = ownedNFT.nft_events.map((nft) => {
-        if (nft.asset_identifier === '') {
+        if (
+          nft.asset_identifier ===
+          'SP3N81TKV43PN24NPHNNM8BBNQJ51Q31HE9G0GC46.bubo::bubo'
+        ) {
           return +nft.value.repr.substr(1)
         }
       })
