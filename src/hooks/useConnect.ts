@@ -29,7 +29,7 @@ export const useConnect = () => {
     manifestPath: '/manifest.json',
     appDetails: {
       name: 'bubo',
-      icon: '/favicon.ico',
+      icon: 'logo.png',
     },
   }
 
