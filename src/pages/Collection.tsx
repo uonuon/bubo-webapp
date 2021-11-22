@@ -72,7 +72,7 @@ export const Collection: React.FC = () => {
   }, [loader.current])
 
   useEffect(() => {
-    if (input) {
+    if (+input <= 10000) {
       getSearchOwl([input])
     }
   }, [input])
@@ -132,6 +132,7 @@ export const Collection: React.FC = () => {
           placeholder="Search your bubo here"
           className="input"
           value={input}
+          type="number"
           onChange={(e) => {
             setInput(e.target.value)
           }}

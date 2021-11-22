@@ -102,7 +102,7 @@ export const Navbar: React.FC = () => {
                       ? truncateMiddle(profile.stxAddress.mainnet, 7)
                       : ''}
                   </p>
-                  <p style={{ margin: 0 }}>{stamina}</p>
+                  <p style={{ margin: 0 }}>{stamina} Stamina</p>
                 </div>
                 <div
                   className="progress-bar"
@@ -117,6 +117,7 @@ export const Navbar: React.FC = () => {
                   <div
                     style={{
                       width: `${(stamina * 100) / 277}%`,
+                      maxWidth: 277,
                       height: 16,
                       borderRadius: 16,
                       backgroundColor: '#e54555',
