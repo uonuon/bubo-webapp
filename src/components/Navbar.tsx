@@ -1,10 +1,13 @@
+/* eslint-disable operator-assignment */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Person } from '@stacks/profile'
 import { useAtom } from 'jotai'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { useCollections } from '../hooks/useCollection'
 import {
   useConnect,
   userSessionState,
@@ -38,9 +41,10 @@ export const truncateMiddle = (input: string, offset = 5): string => {
 export const Navbar: React.FC = () => {
   const [userSession] = useAtom(userSessionState)
   const [profile, setProfile] = useAtom(profileState)
-  const { handleOpenAuth, handleSignOut } = useConnect()
+  const { handleOpenAuth } = useConnect()
   const [, setUserData] = useAtom(userDataState)
-
+  const { ownedCollections } = useCollections()
+  const [stamina, setStamina] = useState(0)
   const getPerson = () => {
     if (userSession.isUserSignedIn()) {
       setProfile(new Person(userSession.loadUserData().profile).profile())
@@ -55,6 +59,19 @@ export const Navbar: React.FC = () => {
       userSession.handlePendingSignIn()
     }
   }, [userSession, setUserData, userSession.isUserSignedIn()])
+
+  useEffect(() => {
+    if (ownedCollections.length > 0) {
+      let countStamina = 0
+      ownedCollections.forEach((bubo) => {
+        const Stamina: any = bubo.attributes.find((attribute) => {
+          return attribute.trait_type === 'Stamina'
+        })
+        countStamina = countStamina + Number(Stamina.value)
+      })
+      setStamina(countStamina)
+    }
+  }, [ownedCollections])
 
   return (
     <nav>
@@ -74,18 +91,18 @@ export const Navbar: React.FC = () => {
           </li>
           {userSession.isUserSignedIn() ? (
             <li>
-              <NavLink to="/profile">
+              {/* <NavLink to="/profile">
                 {' '}
                 {profile ? truncateMiddle(profile.stxAddress.mainnet, 10) : ''}
-              </NavLink>
-              {/* <NavLink to="/profile">
+              </NavLink> */}
+              <NavLink to="/profile">
                 <div className="profileContainer">
-                  <p className="profile-con">
+                  <p style={{ margin: 0 }}>
                     {profile
-                      ? truncateMiddle(profile.stxAddress.mainnet, 10)
+                      ? truncateMiddle(profile.stxAddress.mainnet, 7)
                       : ''}
                   </p>
-                  <p>10</p>
+                  <p style={{ margin: 0 }}>{stamina}</p>
                 </div>
                 <div
                   className="progress-bar"
@@ -99,7 +116,7 @@ export const Navbar: React.FC = () => {
                 >
                   <div
                     style={{
-                      width: 277 - 60,
+                      width: `${(stamina * 100) / 277}%`,
                       height: 16,
                       borderRadius: 16,
                       backgroundColor: '#e54555',
@@ -107,7 +124,7 @@ export const Navbar: React.FC = () => {
                     className="progress-fill"
                   />
                 </div>
-              </NavLink> */}
+              </NavLink>
             </li>
           ) : (
             <div className="connect-button" onClick={handleOpenAuth}>
@@ -117,9 +134,9 @@ export const Navbar: React.FC = () => {
           )}
 
           {/* <NavLink to="/about">About</NavLink> */}
-          {userSession.isUserSignedIn() && (
+          {/* {userSession.isUserSignedIn() && (
             <li onClick={handleSignOut}>Logout</li>
-          )}
+          )} */}
         </ul>
       </div>
     </nav>

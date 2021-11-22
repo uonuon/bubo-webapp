@@ -21,9 +21,12 @@ export const Collection: React.FC = () => {
     staminaState,
     collection,
     getCollection,
+    searchCollection,
+    getSearchOwl,
     hasNextPage,
   } = useCollections()
   const [page, setPages] = useState(1)
+  const [input, setInput] = useState('')
   const prevStamina = usePrevious({ staminaState })
   const [flipped, setFlipped] = useState({
     isFlipped: false,
@@ -68,6 +71,12 @@ export const Collection: React.FC = () => {
     }
   }, [loader.current])
 
+  useEffect(() => {
+    if (input) {
+      getSearchOwl([input])
+    }
+  }, [input])
+
   return (
     <Fragment>
       <div className="collections">
@@ -76,6 +85,7 @@ export const Collection: React.FC = () => {
           Each bubo has its stamina value. stamina is detremined by the
           uniquness of each bubo attributes.
         </p>
+
         <div className="badges">
           <div
             onClick={() => {
@@ -118,7 +128,74 @@ export const Collection: React.FC = () => {
             <p>Legendary</p>
           </div>
         </div>
-        {collection.length > 0 && (
+        <input
+          placeholder="Search your bubo here"
+          className="input"
+          value={input}
+          onChange={(e) => {
+            setInput(e.target.value)
+          }}
+          color="#fff"
+        />
+        {input.length > 0 && collection.length > 0 ? (
+          <div>
+            {searchCollection.length > 0 &&
+              searchCollection.map((collection: BuboCityImage) => {
+                const Stamina = collection.attributes.find((attribute) => {
+                  return attribute.trait_type === 'Stamina'
+                })
+                return (
+                  <ReactCardFlip
+                    isFlipped={
+                      flipped.isFlipped && collection.id === flipped.id
+                    }
+                    flipDirection="horizontal"
+                  >
+                    <div
+                      key={collection.id}
+                      className="flip-container game-card"
+                      onClick={() =>
+                        setFlipped({
+                          isFlipped: !flipped.isFlipped,
+                          id: collection.id,
+                        })
+                      }
+                    >
+                      <img
+                        className="bubo-image"
+                        src={collection.image_url}
+                        alt="bubo"
+                      />
+                      <div className="game-content">
+                        <p>Bubo #{collection.id}</p>
+                        <p>Stamina: {Stamina?.value}</p>
+                      </div>
+                    </div>
+                    <div
+                      key={collection.id}
+                      className="flip-container game-card"
+                      onClick={() =>
+                        setFlipped({
+                          isFlipped: !flipped.isFlipped,
+                          id: collection.id,
+                        })
+                      }
+                    >
+                      <div className="game-content-back">
+                        {collection.attributes.map((attr) => {
+                          return (
+                            <p>
+                              {attr.trait_type}: {attr.value}
+                            </p>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  </ReactCardFlip>
+                )
+              })}
+          </div>
+        ) : (
           <div>
             <div className="game-cards-container">
               {collection.length > 0 &&

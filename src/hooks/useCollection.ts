@@ -1,4 +1,8 @@
-import { useState } from 'react'
+/* eslint-disable array-callback-return */
+import { useAtom } from 'jotai'
+import { useEffect, useState } from 'react'
+import { accountsApi } from '../constants'
+import { profileState } from './useConnect'
 
 export interface BuboCityImage {
   attributes: {
@@ -20,6 +24,10 @@ export const useCollections = () => {
   const [ownedCollections, setOwnedCollections] = useState<
     BuboCityImage[] | []
   >([])
+  const [profile] = useAtom(profileState)
+  const [searchCollection, setSearchCollection] = useState<
+    BuboCityImage[] | []
+  >([])
 
   const getOwnedCollection = (ids: any) => {
     try {
@@ -30,6 +38,47 @@ export const useCollections = () => {
         .then((data) => {
           if (data && data.data) {
             setOwnedCollections(data.data)
+          }
+        })
+    } catch (error) {
+      setHasError(true)
+    }
+  }
+
+  const getOwnedNfts = async () => {
+    if (profile) {
+      const ownedNFT = await accountsApi.getAccountNft({
+        principal: profile.stxAddress.mainnet,
+      })
+      const ids = ownedNFT.nft_events
+        // eslint-disable-next-line consistent-return
+        .map((nft) => {
+          if (
+            nft.asset_identifier ===
+            'SP3N81TKV43PN24NPHNNM8BBNQJ51Q31HE9G0GC46.bubo::bubo'
+          ) {
+            return +nft.value.repr.substr(1)
+          }
+        })
+        .filter((r) => r !== undefined)
+      if (ids.length > 0) {
+        getOwnedCollection(ids)
+      }
+    }
+  }
+  useEffect(() => {
+    getOwnedNfts()
+  }, [profile])
+
+  const getSearchOwl = (ids: any) => {
+    try {
+      fetch(
+        `https://api.bubo.gg/api/v1/owls/metadata?ids[]=${ids.join('&ids[]=')}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          if (data && data.data) {
+            setSearchCollection(data.data)
           }
         })
     } catch (error) {
@@ -68,7 +117,9 @@ export const useCollections = () => {
     setStaminaState,
     collection,
     ownedCollections,
+    searchCollection,
     hasError,
+    getSearchOwl,
     getOwnedCollection,
     hasNextPage,
     isLoading,
